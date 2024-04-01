@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Vendas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sistema de Vendas</h1>
+    
+    <h2>Cadastrar Cliente</h2>
+    <form action="/cadastrar_cliente" method="post">
+        <label for="cliente_id">ID do Cliente:</label>
+        <input type="text" id="cliente_id" name="cliente_id" required>
+        <label for="nome">Nome do Cliente:</label>
+        <input type="text" id="nome" name="nome" required>
+        <button type="submit">Cadastrar Cliente</button>
+    </form>
+
+    <h2>Cadastrar Livro</h2>
+    <form action="/cadastrar_livro" method="post">
+        <label for="livro_id">ID do Livro:</label>
+        <input type="text" id="livro_id" name="livro_id" required>
+        <label for="titulo">Título do Livro:</label>
+        <input type="text" id="titulo" name="titulo" required>
+        <label for="preco">Preço do Livro:</label>
+        <input type="number" id="preco" name="preco" step="0.01" required>
+        <button type="submit">Cadastrar Livro</button>
+    </form>
+
+    <h2>Vendas Realizadas</h2>
+    <table>
+        <tr>
+            <th>Cliente</th>
+            <th>Livro</th>
+            <th>Quantidade</th>
+            <th>Total do Pedido</th>
+        </tr>
+        {% for venda in vendas %}
+        <tr>
+            <td>{{ venda.cliente }}</td>
+            <td>{{ venda.livro }}</td>
+            <td>{{ venda.quantidade }}</td>
+            <td>{{ venda.total }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
